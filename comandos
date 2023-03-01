@@ -1,0 +1,51 @@
+Setup Sugar
+Sugar se implementó para mejorar la experiencia de uso de la candymachine
+
+1er : Instalar solana tools
+https://docs.solana.com/cli/install-solana-cli-tools
+
+2do: Instalar Sugar (https://docs.metaplex.com/developer-tools/sugar/tutorials/my-first-candy-machine)
+
+bash <(curl -sSf https://sugar.metaplex.com/install.sh)
+
+sugar –version
+
+3ero: Instalamos solana tolos: 
+sh -c "$(curl -sSfL https://release.solana.com/v1.15.2/install)"
+Si da error del PATH, correr el siguiente comando:
+export PATH="/home/davidms434/.local/share/solana/install/active_release/bin:$PATH"
+4to: creamos nuestra ruta y levantamos nuestro proyecto, copiamos las fotos y json
+
+Setup Wallets
+Owner
+Treasury
+Creator
+solana-keygen new --outfile ./wallets/Owner.json
+solana-keygen new --outfile ./wallets/Treasury.json
+solana-keygen new --outfile ./wallets/Creator.json
+
+hacer por default la wallet del owner para usarla en solana CLI
+solana config set --keypair /home/davidms434/prueba2/wallets/Owner.json
+
+Cambiar la red en solana CLI
+solana config set --url https://metaplex.devnet.rpcpool.com/
+crear una carpeta “assets” donde vamos a colocar nuestras imágenes y archivos .json
+
+// Crear candy machine con Sugar
+
+Sugar launch // y seguir las instruccipones
+
+Setup Candy Machine UI and Mint
+
+https://docs.metaplex.com/guides/candy-machine-ui
+
+git clone https://github.com/metaplex-foundation/candy-machine-ui .prueba2/candy-machine-ui/
+
+cd ./candy-machine-ui/
+Instalar dependencias
+yarn install
+
+//Creamos una copia de .env.example para colocar nuestro program id de la candy machine
+cp .env.example .env
+
+yarn start
